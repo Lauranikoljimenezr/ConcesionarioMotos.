@@ -1,28 +1,38 @@
-const bcrypt = require("bcryptjs");
-const db = require('../config/config-db.js');
+// authController.ts
+import UserRepository from '../repositories/UserRepository.js';
+import bcrypt from "bcryptjs";
 import { Request, Response } from "express";
 
-let auth = async (req: Request, res: Response) => {
-      try {
-        const {email, password} = req.body;
-        const sql = 'SELECT password FROM users WHERE email=?';
-        const values = [email];
-        const result = await db.execute(sql, values);
-        if (result[0].length > 0){
-          const isPasswordValid = await bcrypt.compare(password, result[0][0].password);
-          if (isPasswordValid){
-            return res.status(200).json({ 
-              status: 'Successful authentication'
-            });
-          }
-        }
-        return res.status(401).json({ 
-          status: 'Incorrect username or password'
-        });
-      } catch (error) {
-        console.log(error);
-      }
-}
+const auth = async (req: Request, res: Response) => {
+    
+    try {
+        const { email, password }: { email: string; password: string } = req.body;
 
+        const storedPassword = await UserRepository.getUserPassword(email);
+
+        if (!storedPassword) {
+            return res.status(401).json({ 
+                status: 'Documento o contraseña incorrecta'
+            });
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, storedPassword);
+        
+        if (isPasswordValid) {
+            return res.status(200).json({ 
+                status: 'Autenticación exitosa'
+            });
+        } else {
+            return res.status(401).json({ 
+                status: 'Documento o contraseña incorrecta'
+            });
+        }
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({ 
+            status: 'Error ocurrido al procesar la solicitud'
+        });
+    }
+}
 
 export default auth;
