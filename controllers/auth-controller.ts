@@ -4,9 +4,11 @@ import authMiddleware from '../Middleware/authMiddleware';
 const authController = (req: Request, res: Response) => {
 
     authMiddleware(req, res, () => {
-       
+        const token = res.locals.token; 
+
         return res.status(200).json({ 
-            status: 'Autenticación exitosa'
+            status: 'Autenticación exitosa',
+            token: token 
         });
     });
 }

@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 const jwt = require("jsonwebtoken");
 import { Request, Response, NextFunction } from "express";
 
-const secretKey = 'SClomaT'; 
+const secretKey = 'Laurappp'; 
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
