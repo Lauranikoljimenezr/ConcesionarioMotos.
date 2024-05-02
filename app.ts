@@ -20,6 +20,5 @@ const PORT = process.env.PORT || 10101;
 app.listen(PORT, () => {
   console.log("Servidor ejecutándose en el puerto: ", PORT);
 }).on("error", (error) => {
-  console.log(error);
-  
+  throw new Error(error.message)
 });

@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 export async function generateToken(email: string){
     try {
-        const token = jwt.sign({ email: email }, process.env.SECRET, { expiresIn: '30s'});
+        const token = jwt.sign({ email: email }, process.env.SECRET, { expiresIn: '1h'});
         return token;
     } catch (error) {
         console.error('Error al generar el token:', error);

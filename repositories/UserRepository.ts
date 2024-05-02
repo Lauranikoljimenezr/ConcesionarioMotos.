@@ -39,7 +39,7 @@ class UserRepository {
     }
 
     static async getAllMotos(): Promise<Moto[]> {
-        try {
+        try { 
             const sql = 'SELECT * FROM motos ';
             const [rows] = await db.execute(sql);
     

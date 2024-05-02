@@ -7,7 +7,7 @@ const secretKey = 'Laurappp';
 
 const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     try {
-        const { email, password }: { email: string; password: string } = req.body;
+        const { email, password } = req.body;
 
         const storedPassword = await UserRepository.getUserPassword(email);
 
@@ -20,7 +20,8 @@ const authMiddleware = async (req: Request, res: Response, next: NextFunction) =
         const isPasswordValid = await bcrypt.compare(password, storedPassword);
         
         if (isPasswordValid) {
-            const token = jwt.sign({ email }, secretKey, { expiresIn: '1h' }); 
+            const token = jwt.sign({ email:email }, secretKey, { expiresIn: '1h' }); 
+            
             res.locals.token = token; 
             next(); 
         } else {

@@ -1,6 +1,6 @@
 import express from "express";
 import inventarioController from "../controllers/inventarioController";
-import validateToken from "../Middleware/authMiddleware";
+import validateToken from "../Middleware/validateToken";
 
 const router = express.Router();
 
