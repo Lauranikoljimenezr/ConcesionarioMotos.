@@ -1,4 +1,4 @@
-import internal from "stream";
+
 class User {
     private _email: string;
     private _name: string;

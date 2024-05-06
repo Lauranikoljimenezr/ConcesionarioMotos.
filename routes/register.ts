@@ -1,6 +1,6 @@
 import express from "express";
 import registerController from '../controllers/register-controller';
-import inventarioController from "../controllers/inventarioController";
+import inventarioController from "../controllers/inventario-Controller";
 const router = express.Router();
 
 

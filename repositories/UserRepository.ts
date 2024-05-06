@@ -1,6 +1,6 @@
 import db from '../config/config-db';
 import User from '../Dto/UserDto';
-import Moto from '../Dto/motodto';
+import Moto from '../Dto/motoDto';
 import Auth from '../Dto/UserAuthenticationDto';
 
 class UserRepository {
