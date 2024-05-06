@@ -9,7 +9,7 @@ const authController = async (req: Request, res: Response) => {
         const { email, password } = req.body;
         const login = await UserService.auth(new Auth(email, password));
         if (login.logged) {
-            // Aquí podrías generar un token si lo necesitas
+          
             return res.status(200).json({
                 status: login.status,
                 token:  await generateToken(email)
