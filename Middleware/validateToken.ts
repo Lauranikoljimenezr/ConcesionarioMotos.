@@ -28,7 +28,7 @@ const validateToken = async (req: Request, res: Response, next: NextFunction) =>
     }
         
     } catch (error) {
-        console.error("Error durante la validación del token:", error);  // Registrar para depurar
+        console.error("Error durante la validación del token:", error);  
         return res.status(401).json({ message: "Autorización fallida" });  
     }
 }
