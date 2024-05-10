@@ -13,11 +13,9 @@ const db = mysql.createPool({
   });
  
 
-  console.log(db.getConnection((conn) => {
+  db.getConnection((conn) => {
 
-      console.log(conn);      
-
-  }));
+  });
 
   
   
