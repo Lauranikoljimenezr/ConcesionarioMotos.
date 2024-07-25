@@ -12,8 +12,6 @@ class UserService {
         user.password = await generateHash(user.password);
         return await UserRepository.add(user);
     }
-   
- 
     static async auth(auth: Auth){
         const result: any = await UserRepository.logeo(auth);
         

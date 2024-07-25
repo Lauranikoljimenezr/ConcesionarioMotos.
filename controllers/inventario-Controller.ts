@@ -1,11 +1,11 @@
 
 import { Request, Response } from 'express';
-import UserService from '../services/MotoServices';
+import MotoService from '../services/MotoServices';
 
 const getInventario = async (req: Request, res: Response) => {
     try {
       
-        const inventario = await UserService.getAllMotos(); 
+        const inventario = await MotoService.getAllMotos(); 
         res.status(200).json({ inventario }); 
     } catch (error) {
         console.error('Error al obtener el inventario:', error);
