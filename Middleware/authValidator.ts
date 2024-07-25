@@ -1,6 +1,7 @@
 import { check, validationResult } from "express-validator";
 import { NextFunction, Request, Response } from "express";
 
+
 const authValidatorParams = [
     check('email').isEmail().withMessage('Debe ingresar un correo valido'),
     check('password').isLength({ min: 8, max: 15 }).withMessage('La contraseña debe tener entre 8 y 15 caracteres'),
